@@ -55,6 +55,38 @@
 @endsection
 
 
+<style>
+    /* Set table layout to fixed to handle overflow */
+    .table {
+        table-layout: fixed;
+        width: 100%; /* Make sure the table takes the full width */
+    }
+
+    /* Limit the max-width for the cells */
+    th, td {
+        max-width: 200px; /* Control max width for both header and data cells */
+        overflow: hidden; /* Hide overflow */
+        white-space: nowrap; /* Prevent line breaks */
+        text-overflow: ellipsis; /* Show ellipsis for overflow */
+    }
+
+    /* Style for link cells */
+    .link-cell {
+        overflow: hidden; /* Hide overflow */
+        text-overflow: ellipsis; /* Show ellipsis for overflow */
+    }
+
+    .link-cell a {
+        display: block; /* Make link a block element */
+        width: 100%; /* Full width */
+        text-decoration: none; /* Remove underline */
+        color: blue; /* Link color */
+    }
+</style>
+
+
+
+
 @section('script')
     <script type="text/javascript">
 
@@ -71,7 +103,8 @@
                     $('<tr>').html(
                         "<td>" + JSONDATA[i].id + "</td> " +
                         "<td>" + JSONDATA[i].title + "</td> " +
-                        "<td><a href='/fileDownload/"+JSONDATA[i].file_path+"' class='btn btn-primary'>Download</a></td>"
+                        // "<td><a href='/fileDownload/"+JSONDATA[i].file_path+"' class='btn btn-primary'>Download</a></td>"
+                        "<td class='link-cell'><a href='/fileDownload/"+JSONDATA[i].file_path+"' target='_blank'>/fileDownload/"+JSONDATA[i].file_path+"</a></td>"
                     ).appendTo('#fileTableBody');
                 });
 
@@ -103,7 +136,7 @@
                     $('<tr>').html(
                         "<td>" + JSONDATA[i].id + "</td> " +
                         "<td>" + JSONDATA[i].title + "</td> " +
-                        "<td><a href='/fileDownload/"+JSONDATA[i].file_path+"' class='btn btn-primary'>Download</a></td>"
+                        "<td class='link-cell'><a href='/fileDownload/"+JSONDATA[i].file_path+"' target='_blank'>/fileDownload/"+JSONDATA[i].file_path+"</a></td>"
                     ).appendTo('#fileTableBody');
                 });
             })

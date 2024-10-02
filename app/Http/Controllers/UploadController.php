@@ -12,7 +12,7 @@ class UploadController extends Controller
 
         // Validate the request
         $request->validate([
-            'FileKey' => 'required|file|mimes:jpg,jpeg,png,pdf,zip,webp|max:2048', // Adjust as needed
+            'FileKey' => 'required|file|mimes:jpg,jpeg,png,pdf,zip,webp|max:10240', // Adjust as needed
             'title' => 'required|string|max:255',
         ]);
 
